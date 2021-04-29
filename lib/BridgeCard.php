@@ -308,9 +308,10 @@ This bridge is not fetching its content through a secure connection</div>';
 	static function displayBridgeCard($bridgeName, $formats, $isActive = true){
 
 		$bridgeFac = new \BridgeFactory();
-		$bridgeFac->setWorkingDir(PATH_LIB_BRIDGES);
-
-		$bridge = $bridgeFac->create($bridgeName);
+		foreach(PATH_LIB_BRIDGES as $BRIDGES_PATH){
+			$bridgeFac->setWorkingDir($BRIDGES_PATH);
+			$bridge = $bridgeFac->create($bridgeName);
+		}
 
 		if($bridge == false)
 			return '';

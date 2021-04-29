@@ -20,34 +20,36 @@ class DetectAction extends ActionAbstract {
 			or returnClientError('You must specify a format!');
 
 		$bridgeFac = new \BridgeFactory();
-		$bridgeFac->setWorkingDir(PATH_LIB_BRIDGES);
+		foreach(PATH_LIB_BRIDGES as $BRIDGES_PATH){
+			$bridgeFac->setWorkingDir($BRIDGES_PATH);
 
-		foreach($bridgeFac->getBridgeNames() as $bridgeName) {
+			foreach($bridgeFac->getBridgeNames() as $bridgeName) {
 
-			if(!$bridgeFac->isWhitelisted($bridgeName)) {
-				continue;
+				if(!$bridgeFac->isWhitelisted($bridgeName)) {
+					continue;
+				}
+
+				$bridge = $bridgeFac->create($bridgeName);
+
+				if($bridge === false) {
+					continue;
+				}
+
+				$bridgeParams = $bridge->detectParameters($targetURL);
+
+				if(is_null($bridgeParams)) {
+					continue;
+				}
+
+				$bridgeParams['bridge'] = $bridgeName;
+				$bridgeParams['format'] = $format;
+
+				header('Location: ?action=display&' . http_build_query($bridgeParams), true, 301);
+				die();
+
 			}
 
-			$bridge = $bridgeFac->create($bridgeName);
-
-			if($bridge === false) {
-				continue;
-			}
-
-			$bridgeParams = $bridge->detectParameters($targetURL);
-
-			if(is_null($bridgeParams)) {
-				continue;
-			}
-
-			$bridgeParams['bridge'] = $bridgeName;
-			$bridgeParams['format'] = $format;
-
-			header('Location: ?action=display&' . http_build_query($bridgeParams), true, 301);
-			die();
-
+			returnClientError('No bridge found for given URL: ' . $targetURL);
 		}
-
-		returnClientError('No bridge found for given URL: ' . $targetURL);
 	}
 }

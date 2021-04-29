@@ -198,8 +198,10 @@ class BridgeImplementationTest extends TestCase {
 
 	public function dataBridgesProvider() {
 		$bridges = array();
-		foreach (glob(PATH_LIB_BRIDGES . '*.php') as $path) {
-			$bridges[basename($path, '.php')] = array($path);
+		foreach(PATH_LIB_BRIDGES as $BRIDGES_PATH){
+			foreach (glob($BRIDGES_PATH . '*.php') as $path) {
+				$bridges[basename($path, '.php')] = array($path);
+			}
 		}
 		return $bridges;
 	}

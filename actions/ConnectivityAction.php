@@ -55,49 +55,51 @@ class ConnectivityAction extends ActionAbstract {
 	private function reportBridgeConnectivity($bridgeName) {
 
 		$bridgeFac = new \BridgeFactory();
-		$bridgeFac->setWorkingDir(PATH_LIB_BRIDGES);
 
-		if(!$bridgeFac->isWhitelisted($bridgeName)) {
-			header('Content-Type: text/html');
-			returnServerError('Bridge is not whitelisted!');
-		}
+		foreach(PATH_LIB_BRIDGES as $BRIDGES_PATH){
+			$bridgeFac->setWorkingDir($BRIDGES_PATH);
 
-		header('Content-Type: text/json');
+			if(!$bridgeFac->isWhitelisted($bridgeName)) {
+				header('Content-Type: text/html');
+				returnServerError('Bridge is not whitelisted!');
+			}
 
-		$retVal = array(
-			'bridge' => $bridgeName,
-			'successful' => false,
-			'http_code' => 200,
-		);
+			header('Content-Type: text/json');
 
-		$bridge = $bridgeFac->create($bridgeName);
+			$retVal = array(
+				'bridge' => $bridgeName,
+				'successful' => false,
+				'http_code' => 200,
+			);
 
-		if($bridge === false) {
-			echo json_encode($retVal);
-			return;
-		}
+			$bridge = $bridgeFac->create($bridgeName);
 
-		$curl_opts = array(
-			CURLOPT_CONNECTTIMEOUT => 5
-		);
+			if($bridge === false) {
+				echo json_encode($retVal);
+				return;
+			}
 
-		try {
-			$reply = getContents($bridge::URI, array(), $curl_opts, true);
+			$curl_opts = array(
+				CURLOPT_CONNECTTIMEOUT => 5
+			);
 
-			if($reply) {
-				$retVal['successful'] = true;
-				if (isset($reply['header'])) {
-					if (strpos($reply['header'], 'HTTP/1.1 301 Moved Permanently') !== false) {
-						$retVal['http_code'] = 301;
+			try {
+				$reply = getContents($bridge::URI, array(), $curl_opts, true);
+
+				if($reply) {
+					$retVal['successful'] = true;
+					if (isset($reply['header'])) {
+						if (strpos($reply['header'], 'HTTP/1.1 301 Moved Permanently') !== false) {
+							$retVal['http_code'] = 301;
+						}
 					}
 				}
+			} catch(Exception $e) {
+				$retVal['successful'] = false;
 			}
-		} catch(Exception $e) {
-			$retVal['successful'] = false;
+
+			echo json_encode($retVal);
 		}
-
-		echo json_encode($retVal);
-
 	}
 
 	private function returnEntryPage() {

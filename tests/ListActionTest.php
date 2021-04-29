@@ -43,14 +43,15 @@ class ListActionTest extends TestCase {
 		);
 
 		$bridgeFac = new BridgeFactory();
-		$bridgeFac->setWorkingDir(PATH_LIB_BRIDGES);
+		foreach(PATH_LIB_BRIDGES as $BRIDGES_PATH){
+			$bridgeFac->setWorkingDir($BRIDGES_PATH);
 
-		$this->assertEquals(
-			count($bridgeFac->getBridgeNames()),
-			count($items['bridges']),
-			'Number of bridges doesn\'t match'
-		);
-
+			$this->assertEquals(
+				count($bridgeFac->getBridgeNames()),
+				count($items['bridges']),
+				'Number of bridges doesn\'t match'
+			);
+		}
 		$expectedKeys = array(
 			'status',
 			'uri',

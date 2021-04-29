@@ -21,7 +21,10 @@ define('PATH_LIB', PATH_ROOT . 'lib/');
 define('PATH_LIB_VENDOR', PATH_ROOT . 'vendor/');
 
 /** Path to the bridges library */
-define('PATH_LIB_BRIDGES', PATH_ROOT . 'bridges/');
+define('PATH_LIB_BRIDGES', array(
+                            PATH_ROOT . 'bridges/',
+                            PATH_ROOT . 'custom/bridges/'
+                            ));
 
 /** Path to the formats library */
 define('PATH_LIB_FORMATS', PATH_ROOT . 'formats/');
@@ -36,13 +39,13 @@ define('PATH_LIB_ACTIONS', PATH_ROOT . 'actions/');
 define('PATH_CACHE', PATH_ROOT . 'cache/');
 
 /** Path to the whitelist file */
-define('WHITELIST', PATH_ROOT . 'whitelist.txt');
+define('WHITELIST', PATH_ROOT . 'custom/config/whitelist.txt');
 
 /** Path to the default whitelist file */
 define('WHITELIST_DEFAULT', PATH_ROOT . 'whitelist.default.txt');
 
 /** Path to the configuration file */
-define('FILE_CONFIG', PATH_ROOT . 'config.ini.php');
+define('FILE_CONFIG', PATH_ROOT . 'custom/config/config.ini.php');
 
 /** Path to the default configuration file */
 define('FILE_CONFIG_DEFAULT', PATH_ROOT . 'config.default.ini.php');

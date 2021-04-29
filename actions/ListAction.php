@@ -18,36 +18,37 @@ class ListAction extends ActionAbstract {
 		$list->total = 0;
 
 		$bridgeFac = new \BridgeFactory();
-		$bridgeFac->setWorkingDir(PATH_LIB_BRIDGES);
+		foreach(PATH_LIB_BRIDGES as $BRIDGES_PATH){
+			$bridgeFac->setWorkingDir($BRIDGES_PATH);
 
-		foreach($bridgeFac->getBridgeNames() as $bridgeName) {
+			foreach($bridgeFac->getBridgeNames() as $bridgeName) {
 
-			$bridge = $bridgeFac->create($bridgeName);
+				$bridge = $bridgeFac->create($bridgeName);
 
-			if($bridge === false) { // Broken bridge, show as inactive
+				if($bridge === false) { // Broken bridge, show as inactive
+
+					$list->bridges[$bridgeName] = array(
+						'status' => 'inactive'
+					);
+
+					continue;
+
+				}
+
+				$status = $bridgeFac->isWhitelisted($bridgeName) ? 'active' : 'inactive';
 
 				$list->bridges[$bridgeName] = array(
-					'status' => 'inactive'
+					'status' => $status,
+					'uri' => $bridge->getURI(),
+					'name' => $bridge->getName(),
+					'icon' => $bridge->getIcon(),
+					'parameters' => $bridge->getParameters(),
+					'maintainer' => $bridge->getMaintainer(),
+					'description' => $bridge->getDescription()
 				);
 
-				continue;
-
 			}
-
-			$status = $bridgeFac->isWhitelisted($bridgeName) ? 'active' : 'inactive';
-
-			$list->bridges[$bridgeName] = array(
-				'status' => $status,
-				'uri' => $bridge->getURI(),
-				'name' => $bridge->getName(),
-				'icon' => $bridge->getIcon(),
-				'parameters' => $bridge->getParameters(),
-				'maintainer' => $bridge->getMaintainer(),
-				'description' => $bridge->getDescription()
-			);
-
 		}
-
 		$list->total = count($list->bridges);
 
 		header('Content-Type: application/json');

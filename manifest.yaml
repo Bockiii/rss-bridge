@@ -1,0 +1,16 @@
+image: rssbridge/rss-bridge:latest
+manifests:
+  - image: rssbridge/rss-bridge:amd64
+    platform:
+      architecture: amd64
+      os: linux
+  - image: rssbridge/rss-bridge:arm32v7
+    platform:
+      architecture: arm
+      os: linux
+      variant: v7
+  - image: rssbridge/rss-bridge:arm64v8
+    platform:
+      architecture: arm64
+      os: linux
+      variant: v8

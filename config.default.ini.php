@@ -11,7 +11,8 @@
 ; https://www.php.net/manual/en/timezones.php
 ; timezone = "UTC" (default)
 timezone = "UTC"
-
+ 
+ 
 [cache]
 
 ; Defines the cache type used by RSS-Bridge
@@ -22,6 +23,7 @@ type = "file"
 ; true  = enabled
 ; false = disabled (default)
 custom_timeout = false
+
 
 [admin]
 ; Advertise an email address where people can reach the administrator.

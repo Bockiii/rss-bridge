@@ -1,15 +1,15 @@
-image: bocki/rss-bridge-test:latest
+image: bocki/rss-bridge-test:stable
 manifests:
-  - image: bocki/rss-bridge-test:amd64
+  - image: bocki/rss-bridge-test:amd64-stable
     platform:
       architecture: amd64
       os: linux
-  - image: bocki/rss-bridge-test:arm32v7
+  - image: bocki/rss-bridge-test:arm32v7-stable
     platform:
       architecture: arm
       os: linux
       variant: v7
-  - image: bocki/rss-bridge-test:arm64v8
+  - image: bocki/rss-bridge-test:arm64v8-stable
     platform:
       architecture: arm64
       os: linux

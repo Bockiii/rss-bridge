@@ -28,4 +28,5 @@ else
     curl -L https://github.com/estesp/manifest-tool/releases/download/$MANIFEST_TOOL_VERSION/manifest-tool-$IMAGE_OS-$HOST_ARCH_ALIAS -o manifest-tool
     chmod +x manifest-tool
     ./manifest-tool push from-spec manifest.yaml
+    ./manifest-tool push from-spec manifest.stable.yaml
 fi

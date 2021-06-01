@@ -3,6 +3,13 @@
   "name": "RSS-Bridge",
   "description": "RSS-Bridge is a PHP project capable of generating RSS and Atom feeds for websites which don't have one.",
   "repository": "https://github.com/RSS-Bridge/rss-bridge",
-  "keywords": ["php", "rss-bridge", "rss"]
+  "keywords": ["php", "rss-bridge", "rss"],
+  "environments": {
+    "review": {
+      "env": {
+        "REVIEW_APP": "true"
+      }
+    }
+  }
 }
 

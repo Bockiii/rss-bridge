@@ -7,7 +7,7 @@
   "environments": {
     "review": {
       "env": {
-        "REVIEW_APP": "true"
+        "RSS_REVIEW_APP": "true"
       }
     }
   }

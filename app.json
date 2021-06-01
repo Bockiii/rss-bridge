@@ -7,7 +7,7 @@
   "environments": {
     "review": {
       "env": {
-        "RSS_REVIEW_APP": "true"
+        "RSS_HEROKU_REVIEW": "true"
       }
     }
   }

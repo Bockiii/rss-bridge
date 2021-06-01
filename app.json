@@ -6,8 +6,8 @@
   "keywords": ["php", "rss-bridge", "rss"],
   "environments": {
     "review": {
-      "scripts": {
-        "postdeploy": "set -o noclobber && echo '*' > /app/whitelist.txt"
+      "env": {
+        "REVIEW_APP": "true"
       }
     }
   }

@@ -10,7 +10,7 @@
         "REVIEW_APP": "true"
       },
       "scripts": {
-        "review": "echo '*' > /app/whitelist.txt"
+        "postdeploy": "echo '*' > /app/whitelist.txt"
       }
     }
   }

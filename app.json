@@ -8,6 +8,9 @@
     "review": {
       "env": {
         "REVIEW_APP": "true"
+      },
+      "scripts": {
+        "review": "echo '*' > /app/whitelist.txt"
       }
     }
   }

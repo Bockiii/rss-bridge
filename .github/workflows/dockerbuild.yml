@@ -1,7 +1,9 @@
 name: Build Image On Release
 
 on:
-  release:
+  push:
+    tags:
+      - '20*'
 
 env:
   DOCKERHUB_SLUG: bocki/rss-bridge-test
@@ -21,7 +23,7 @@ jobs:
           images: |
             ${{ env.DOCKERHUB_SLUG }}
           tags: |
-            type=semver,pattern={{raw}}
+            type=match,pattern=\d-\d-\d
             type=raw,value=stable
           flavor: |
             latest=false

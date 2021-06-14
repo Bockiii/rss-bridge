@@ -23,7 +23,7 @@ jobs:
           images: |
             ${{ env.DOCKERHUB_SLUG }}
           tags: |
-            type=match,pattern=\d-\d-\d
+            type=ref,event=tag
             type=raw,value=stable
           flavor: |
             latest=false

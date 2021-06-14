@@ -1,9 +1,7 @@
 name: Build Image On Release
 
 on:
-  push:
-    tags: 
-      - 'v*'
+  release:
 
 env:
   DOCKERHUB_SLUG: bocki/rss-bridge-test

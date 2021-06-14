@@ -20,6 +20,11 @@ jobs:
         with:
           images: |
             ${{ env.DOCKERHUB_SLUG }}
+          tags: |
+            type=semver,pattern={{raw}}
+            type=raw,value=stable
+          flavor: |
+            latest=false
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1

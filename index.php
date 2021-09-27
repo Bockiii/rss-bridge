@@ -25,6 +25,7 @@ define('USER_AGENT',
 	. ')'
 );
 
+
 ini_set('user_agent', USER_AGENT);
 
 try {

@@ -25,8 +25,8 @@ jobs:
           images: |
             ${{ env.DOCKERHUB_SLUG }}
           tags: |
-            type=ref,event=tag,enable=${{ !startsWith(github.ref, 'refs/tags/20') }}
-            type=raw,value=stable,enable=${{ !startsWith(github.ref, 'refs/tags/20') }}
+            type=ref,event=tag,enable=${{ startsWith(github.ref, 'refs/tags/20') }}
+            type=raw,value=stable,enable=${{ startsWith(github.ref, 'refs/tags/20') }}
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1

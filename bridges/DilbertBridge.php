@@ -7,6 +7,7 @@ class DilbertBridge extends BridgeAbstract
     const URI = 'https://dilbert.com';
     const CACHE_TIMEOUT = 21600; // 6h
     const DESCRIPTION = 'The Unofficial Dilbert Daily Comic Strip';
+    
 
     public function collectData()
     {

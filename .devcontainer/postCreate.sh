@@ -7,6 +7,11 @@ apt-get update && \
       libzip-dev \
       libmemcached-dev \
       nss-plugin-pem \
+      gcc \
+      make \
+      autoconf \
+      libc-dev \
+      pkg-config \
       libicu-dev && \
     docker-php-ext-install zip && \
     docker-php-ext-install intl && \

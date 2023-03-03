@@ -1,10 +1,13 @@
 {
 	"name": "Dev Codespace - PHP Current Stable",
-	"image": "mcr.microsoft.com/devcontainers/php:8.0-buster",
+	"image": "mcr.microsoft.com/devcontainers/php:8.0-bullseye",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
-
+    "forwardPorts": [
+		// apache
+		8080
+	],
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.
@@ -24,7 +27,8 @@
 
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "sudo chmod a+x \"$(pwd)\" && sudo rm -rf /var/www/html && sudo ln -s \"$(pwd)\" /var/www/html",
+	//#"postCreateCommand": "bash .devcontainer/postCreate.sh"
+	"postCreateCommand": "sudo cp .devcontainer/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini && sudo cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini && sudo chmod a+x \"$(pwd)\" && sudo rm -rf /var/www/html && sudo ln -s \"$(pwd)\" /var/www/html && sudo apache2ctl start"
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	//"remoteUser": "root"

@@ -16,6 +16,7 @@ apt-get update && \
     mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
     
 cp ./.devcontainer/nginx.conf /etc/nginx/sites-enabled/default
+cp ./.devcontainer/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 nginx
 

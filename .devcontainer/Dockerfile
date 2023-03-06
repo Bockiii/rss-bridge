@@ -8,6 +8,7 @@ LABEL website="https://github.com/RSS-Bridge/rss-bridge"
 
 RUN apt-get update && \
     apt-get install --yes --no-install-recommends \
+      git \
       nginx \
       zlib1g-dev \
       libzip-dev \
@@ -16,7 +17,7 @@ RUN apt-get update && \
       libicu-dev && \
     docker-php-ext-install zip && \
     docker-php-ext-install intl && \
-    docker-php-ext-install xdebug && \
+    pecl install xdebug && \
     pecl install memcached && \
     docker-php-ext-enable memcached && \
     docker-php-ext-enable opcache && \
@@ -32,8 +33,6 @@ COPY --from=curlimpersonate /usr/local/lib/libcurl-impersonate-ff.so /usr/local/
 ENV LD_PRELOAD /usr/local/lib/curl-impersonate/libcurl-impersonate-ff.so
 
 ENV CURL_IMPERSONATE ff91esr
-
-ENV HTTP_PORT 8080
 
 EXPOSE 80
 

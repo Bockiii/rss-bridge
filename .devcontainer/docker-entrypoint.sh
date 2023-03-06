@@ -34,12 +34,12 @@ done
 # This feature can set the internal port that apache uses to something else.
 # If docker is run on network:service mode, no two containers can use port 80
 # To use this, start the container with the additional environment variable "HTTP_PORT"
-if [ ! -z ${HTTP_PORT} ]; then
-	sed -i "s/80/$HTTP_PORT/g" /etc/nginx/sites-enabled/default
-fi
+#if [ ! -z ${HTTP_PORT} ]; then
+#	sed -i "s/80/$HTTP_PORT/g" /etc/nginx/sites-enabled/default
+#fi
 
 # nginx will daemonize
 nginx
 
 # php-fpm will not
-php-fpm
+php-fpm -D

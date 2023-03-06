@@ -23,7 +23,7 @@ RUN apt-get update && \
     docker-php-ext-enable xdebug && \
     mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
-COPY ./config/nginx.conf /etc/nginx/sites-enabled/default
+#COPY ./config/nginx.conf /etc/nginx/sites-enabled/default
 
 COPY --chown=www-data:www-data ./ /app/
 

@@ -1,4 +1,7 @@
 FROM rssbridge/rss-bridge:latest
 
-RUN pecl install xdebug && \
+RUN  apt-get update && \
+    apt-get install --yes --no-install-recommends \
+      git && \
+    pecl install xdebug && \
     docker-php-ext-enable xdebug

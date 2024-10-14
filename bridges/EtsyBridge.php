@@ -49,7 +49,7 @@ class EtsyBridge extends BridgeAbstract
             $item['uri'] = $result->find('a', 0)->href;
             $item['author'] = $result->find('p.wt-text-gray > span', 2)->plaintext;
 
-            $item['content'] = '<p>      '
+            $item['content'] = '<p>       '
             . $result->find('span.currency-symbol', 0)->plaintext
             . $result->find('span.currency-value', 0)->plaintext
             . '</p><p>'

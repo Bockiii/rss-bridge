@@ -16,7 +16,7 @@ IRC channel #rssbridge at https://libera.chat/
 Alternatively find another 
 [public instance](https://rss-bridge.github.io/rss-bridge/General/Public_Hosts.html).
 
-Requires minimum PHP 7.4.
+Requires minimum PHP 7.4. 
 
  
 [![LICENSE](https://img.shields.io/badge/license-UNLICENSE-blue.svg)](UNLICENSE)

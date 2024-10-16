@@ -13,7 +13,7 @@ IRC channel #rssbridge at https://libera.chat/
 
 [Full documentation](https://rss-bridge.github.io/rss-bridge/index.html)
 
-Alternatively find another
+Alternatively find another 
 [public instance](https://rss-bridge.github.io/rss-bridge/General/Public_Hosts.html).
 
 Requires minimum PHP 7.4.

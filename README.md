@@ -6,7 +6,7 @@ RSS-Bridge is a PHP web application.
 
 It generates web feeds for websites that don't have one.
 
-  
+   
 Officially hosted instance: https://rss-bridge.org/bridge01/
 
 IRC channel #rssbridge at https://libera.chat/

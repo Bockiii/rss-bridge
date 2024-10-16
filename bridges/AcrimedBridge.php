@@ -13,7 +13,7 @@ class AcrimedBridge extends FeedExpander
             'limit' => [
                 'name' => 'limit',
                 'type' => 'number',
-                'defaultValue' => 2,
+                'defaultValue' => 3,
             ]
         ]
     ];

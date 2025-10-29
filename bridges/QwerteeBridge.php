@@ -13,9 +13,11 @@ class QwerteeBridge extends BridgeAbstract
     public function collectData()
     {
         $html = getSimpleHTMLDOM(self::URI);
-
-        foreach ($html->find('div.big-slides', 0)->find('div.big-slide') as $element) {
-            $title = $element->find('div.index-tee', 0)->getAttribute('data-name', 0);
+        $limit = 3;
+        $runs = 0;
+        foreach ($html->find('div.h-full', 0) as $element) {
+            $runs += 1;
+            $title = $element->find('img', 0)->getAttribute('alt', 0);
             $today = date('m/d/Y');
             $item = [];
             $item['uri'] = self::URI;
@@ -29,6 +31,9 @@ class QwerteeBridge extends BridgeAbstract
             . '" /></a>';
 
             $this->items[] = $item;
+            if ($limit == $runs) {
+                break;
+            }
         }
     }
 }
